@@ -9,17 +9,21 @@ rl.on('line', (line) => {
   input.push(line);
 }).on('close', () => {
   let targetPrice = input[0].split(' ')[1];
-  let coins = input.slice(1, input.length);
+  let coins = input
+    .slice(1)
+    .map((ele) => parseInt(ele))
+    .filter((ele) => targetPrice >= ele)
+    .reverse();
   console.log(getMinNumOfCoin(coins, targetPrice));
 });
 
 function getMinNumOfCoin(coins, targetPrice) {
   let count = 0;
-  for (let i = coins.length - 1; i >= 0; i--) {
+  for (let i = 0; i < coins.length; i++) {
     if (targetPrice === 0) break;
-    while (targetPrice - coins[i] >= 0) {
-      targetPrice -= coins[i];
-      count++;
+    if (targetPrice >= coins[i]) {
+      count += Math.floor(targetPrice / coins[i]);
+      targetPrice %= coins[i];
     }
   }
   return count;
@@ -28,4 +32,5 @@ function getMinNumOfCoin(coins, targetPrice) {
 // https://www.acmicpc.net/problem/11047
 /*
 <FEEDBACK>
+while문을 안 써도 가능할 것 같다.
 */
