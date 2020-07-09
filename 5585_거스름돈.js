@@ -31,3 +31,5 @@ function getCountOfChanges(targetPrice) {
   });
   return count;
 }
+
+// https://www.acmicpc.net/problem/5585
