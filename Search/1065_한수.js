@@ -16,12 +16,17 @@ const rl = readline.createInterface({
 
 let input;
 rl.on('line', (line) => {
-  input = line;
+  input = Number(line);
 }).on('close', () => {
   let count = 0;
-  for (let i = 1; i <= input; i++) {
-    if (isHansu(i)) {
-      count++;
+  if (input < 100) {
+    count += input;
+  } else {
+    count += 99;
+    for (let i = 100; i <= input; i++) {
+      if (isHansu(i)) {
+        count++;
+      }
     }
   }
   console.log(count);
