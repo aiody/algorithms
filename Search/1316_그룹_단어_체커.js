@@ -45,3 +45,5 @@ function isGroupWord(word) {
   }
   return true;
 }
+
+// https://www.acmicpc.net/problem/1316

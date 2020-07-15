@@ -35,3 +35,5 @@ rl.on('line', (line) => {
   }
   console.log(seriesNum[input - 1]);
 });
+
+// https://www.acmicpc.net/problem/1436

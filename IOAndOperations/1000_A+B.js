@@ -13,3 +13,5 @@ rl.on('line', function (line) {
   console.log(input[0] + input[1]);
   process.exit();
 });
+
+// https://www.acmicpc.net/problem/1000

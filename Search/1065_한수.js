@@ -45,3 +45,5 @@ function isHansu(num) {
   }
   return true;
 }
+
+// https://www.acmicpc.net/problem/1065

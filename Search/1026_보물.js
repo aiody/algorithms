@@ -41,3 +41,5 @@ function sumOfMultiplesOfEachEle(A, B) {
   }
   return sum;
 }
+
+// https://www.acmicpc.net/problem/1026

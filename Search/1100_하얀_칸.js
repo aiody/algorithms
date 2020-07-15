@@ -29,3 +29,5 @@ function getNumOfPiecesOnWhiteSquare(board) {
   }
   return count;
 }
+
+// https://www.acmicpc.net/problem/1100
