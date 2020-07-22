@@ -121,6 +121,18 @@ n 수열 길이, a 처음 값, l 마지막 값
 
 ====> https://danco.tistory.com/30
 수학적으로 접근하면 더 쉽게 풀 수 있다.
+
+N : 길이가 L인 수열의 합
+L : 수열의 길이
+
+N = x + (x + 1) + (x + 2) + ... + (x + (L - 1))
+N = Lx + (0 + 1 + 2 + ... + (L - 1))
+N = Lx + t
+t는 수열의 합 공식을 사용해서 정리하면 L(L - 1) / 2
+N - t = Lx
+x = (N - t) / L
+x = (N - L(L - 1) / 2) / L
+여기서 x는 0보다 같거나 크고 정수여야 한다.
 */
 
 let input;
@@ -131,6 +143,19 @@ rl.on('line', (line) => {
   const targetNum = splitedInput[0];
   let minLength = splitedInput[1];
 
+  // 2번째 방법
+  let startSequence = -1;
+  while (minLength <= 100) {
+    startSequence = (targetNum - minLength * (minLength - 1) * 0.5) / minLength;
+    if (startSequence >= 0 && startSequence % 1 === 0) {
+      break;
+    }
+    minLength++;
+  }
+  console.log(minLength > 100 ? -1 : printAnswer(startSequence, minLength));
+
+  /*
+  // 1번째 방법
   let startNumOfAnswer = 0;
   while (minLength <= 100) {
     let sumOfSequence = 0;
@@ -151,6 +176,7 @@ rl.on('line', (line) => {
     minLength++;
   }
   console.log(minLength > 100 ? -1 : printAnswer(startNumOfAnswer, minLength));
+  */
 });
 
 function printAnswer(startNum, length) {
