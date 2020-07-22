@@ -1,7 +1,7 @@
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout,
+  output: process.stdout
 });
 
 /*
@@ -118,6 +118,9 @@ n 수열 길이, a 처음 값, l 마지막 값
 32 - 8
 24~39 = 504
 25 40 = 520
+
+====> https://danco.tistory.com/30
+수학적으로 접근하면 더 쉽게 풀 수 있다.
 */
 
 let input;
