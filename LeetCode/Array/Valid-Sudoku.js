@@ -5,8 +5,6 @@
  * @return {boolean}
  */
 var isValidSudoku = function (board) {
-  // time complexity is 9^3
-
   // check row and column
   for (let i = 0; i < 9; i++) {
     let uniqueNum = {};
