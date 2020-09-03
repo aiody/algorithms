@@ -3,10 +3,15 @@
 function solution(key, lock) {
   for (let i = 1 - key.length; i < lock.length; i++) {
     for (let j = 1 - key.length; j < lock.length; j++) {
-      let newKey = redefineIndexOfKey(i, j, key);
-      for (let i = 0; i < 4; i++) {
-        newKey = rotateKey(newKey, key.length);
-        if (compareKeyWithLock(newKey, lock)) {
+      for (let k = 0; k < 4; k++) {
+        let whatToCompare = findWhatToCompareWithLock(
+          i,
+          j,
+          key,
+          lock.length,
+          k
+        );
+        if (compareKeyWithLock(whatToCompare, lock)) {
           return true;
         }
       }
@@ -25,19 +30,21 @@ function rotateKey(key, n) {
   return newKey;
 }
 
-function redefineIndexOfKey(curX, curY, key) {
-  let n = key.length;
-  let newKey = Array.from(Array(n), () => Array(n).fill(0));
-  for (let i = curX; i < curX + n; i++) {
-    for (let j = curY; j < curY + n; j++) {
-      if (!isInKey(i, j, n)) continue;
-      newKey[i][j] = key[i - curX][j - curY];
+function findWhatToCompareWithLock(curX, curY, key, n, numOfRotation) {
+  let whatToCompare = Array.from(Array(n), () => Array(n).fill(0));
+  for (let i = 0; i < numOfRotation; i++) {
+    key = rotateKey(key, key.length);
+  }
+  for (let i = curX; i < curX + key.length; i++) {
+    for (let j = curY; j < curY + key.length; j++) {
+      if (!isInLock(i, j, n)) continue;
+      whatToCompare[i][j] = key[i - curX][j - curY];
     }
   }
-  return newKey;
+  return whatToCompare;
 }
 
-function isInKey(x, y, N) {
+function isInLock(x, y, N) {
   return x >= 0 && x < N && y >= 0 && y < N;
 }
 
