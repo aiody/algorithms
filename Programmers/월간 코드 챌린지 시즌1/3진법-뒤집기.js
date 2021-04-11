@@ -1,3 +1,5 @@
+// https://programmers.co.kr/learn/courses/30/lessons/68935
+
 function solution(n) {
   var answer = 0;
   // n이 100,000,000 이하이므로 3진법으로 18자리를 넘을 수 없다.
